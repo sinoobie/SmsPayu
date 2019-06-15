@@ -1,3 +1,10 @@
+#Author: KANG-NEWBIE
+#Contact: t.me/kang_nuub
+#SPECIAL THANKS TO WIDHI
+
+#peringatan buat kang recode, kontol!
+#recode tidak akan membuatmu menjadi pro-programmer!
+
 import mechanize,time,os
 from bs4 import BeautifulSoup as BS
 
