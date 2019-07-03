@@ -7,7 +7,7 @@ Note: saya menggunakan <a href='https://www.python.org/downloads/'>python 3.x.x<
 pkg install python git
 python -m pip install mechanize
 git clone https://github.com/KANG-NEWBIE/PayuSpam
-cd PayuSpam
+cd SmsPayu
 python payu.py
 ```
 <b>Check repostory lainnya </b><a href='https://github.com/KANG-NEWBIE?tab=repositories'>DISINI</a>
