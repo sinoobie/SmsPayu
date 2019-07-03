@@ -2,9 +2,6 @@
 #Contact: t.me/kang_nuub
 #SPECIAL THANKS TO WIDHI
 
-#peringatan buat kang recode, kontol!
-#recode tidak akan membuatmu menjadi pro-programmer!
-
 import mechanize,time,os
 from bs4 import BeautifulSoup as BS
 
@@ -24,33 +21,27 @@ class Payu:
 		('Origin','http://sms.payuterus.biz'),
 		('Upgrade-Insecure-Requests','1'),
 		('Content-Type','application/x-www-form-urlencoded'),
-		('User-Agent','Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36'),
+		('User-Agent','Opera/9.80 (Android; Opera Mini/8.0.1807/36.1609; U; en) Presto/2.12.423 Version/12.16'),
 		('Accept','text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3'),
 		('Referer','http://sms.payuterus.biz/alpha/'),
 		('Accept-Encoding','gzip, deflate'),
 		('Accept-Language','id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7'),
+		('Cookie','_ga=GA1.2.131924726.1560439960; PHPSESSID=jjrqqaakmfcgfgbtjt8tve5595; _gid=GA1.2.1969561921.1561024035; _gat=1')
 		]
-		self.u='http://sms.payuterus.biz/alpha'
+		self.u='http://sms.payuterus.biz/alpha/'
 		self.banner()
 
 	def banner(self):
 		os.system('clear')
 		print("""
-		;;;;;;;;;;;;;;;;;;;;;;
-		; PayuTerus Spammers ;
-		;   By KANG-NEWBIE   ;
-		;;;;;;;;;;;;;;;;;;;;;;
+		;;;;;;;;;;;;;;;;;;;;;;;;
+		; SMS Gratis PayuTerus ;
+		;    By KANG-NEWBIE    ;
+		;;;;;;;;;;;;;;;;;;;;;;;;
 		""")
-		no=int(input('[?] Nomor Target: '))
-		psn=input('[?] Pesan: ')
-		jm=int(input('[?] Jumlah: '))
-		msg=psn.split(' ')
-		if jm > 20:
-			exit('[Sorry] Jangan kebanyakan gan!!!')
-		else:
-			for i in range(jm):
-				self.main(no,msg)
-				time.sleep(1.5)
+		no=input('[?] Nomor Target: ')
+		psn=input('[info] ketik "\\n" untuk garis baru pada pesan\n[?] Pesan: ')
+		self.main(no,psn)
 
 	def main(self,no,msg):
 		o=[]
@@ -59,17 +50,25 @@ class Payu:
 			o.append(x.text)
 		capt=int(str(o)[2])+int(str(o)[6])
 		self.br.select_form(nr=0)
-		self.br.form['nohp']=str(no)
-		self.br.form['pesan']=str(msg)
+		self.br.form['nohp']=no
+		self.br.form['pesan']=msg
 		self.br.form['captcha']=str(capt)
 		sub=self.br.submit().read()
 		if 'SMS Gratis Telah Dikirim' in str(sub):
 			print('[+] Sukses mengirim sms ke',no)
+		elif 'Mohon Tunggu 8 Menit Lagi' in str(sub):
+			print('[!] Tunggu 8 menit untuk mengirim sms yang sama')
 		else:
 			print('[-] Gagal mengirim sms ke',no)
 
 try:
 	Payu()
+	while True:
+		plh=input("\n[?] kirim lagi (y/n) ")
+		if plh.lower() == 'y':
+			Payu()
+		elif plh.lower() == 'n':
+			exit('sampai jumpa lagi...')
 except KeyboardInterrupt:
 	print('\nErr: KeyboardInterrupt')
 except Exception as E:
