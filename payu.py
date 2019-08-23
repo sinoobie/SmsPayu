@@ -72,4 +72,4 @@ try:
 except KeyboardInterrupt:
 	print('\nErr: KeyboardInterrupt')
 except Exception as E:
-	print(f'Err: {E}')
+	print('Err: %s'%(E))
