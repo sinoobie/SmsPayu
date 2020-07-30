@@ -5,7 +5,7 @@ Note: saya menggunakan <a href='https://www.python.org/downloads/'>python 3.x.x<
 # Cara install
 ```
 pkg install python git
-python -m pip install mechanize
+python -m pip install requests
 git clone https://github.com/KANG-NEWBIE/PayuSpam
 cd SmsPayu
 python payu.py
